@@ -48,9 +48,17 @@ $(document).ready(function () {
   });
 
   // Add new js functions here -----------------------------------------------------------------
-
-  
-
+  $(".nav-pills .nav-item .nav-link").click(function (e) {
+    var $this = $(this);
+    var $scrollBox = $this.closest(".nav-pills");
+    var $scrollOldPos = $scrollBox.scrollLeft();
+    var $scrollPos =
+      $this.offset().left +
+      $scrollOldPos +
+      $this.innerWidth() / 2 -
+      $scrollBox.innerWidth() / 2;
+    $scrollBox.stop(true, true).animate({ scrollLeft: $scrollPos }, 300);
+  });
 
   // Don't add anything below this --------------------------------------------------------------
   // Add Class on Window Load
